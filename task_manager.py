@@ -8,10 +8,6 @@ from utils import save_tasks_to_file, load_tasks_from_file
 tasks = load_tasks_from_file()  # ← Load saved tasks on app launch
 
 def TaskManagerUI(parent):
-    tasks.append(task)
-    save_tasks_to_file(tasks)  # ← Save after adding
-    update_task_list()
-
     # Clear and set up layout
     for widget in parent.winfo_children():
         widget.destroy()
@@ -38,9 +34,9 @@ def TaskManagerUI(parent):
 
     # --- Add Button ---
     def add_task():
-        title = title_entry.get().strip()
-        category = category_combo.get()
-        due_date = due_date_entry.get().strip()
+        tasks.append(task)
+        save_tasks_to_file(tasks)  # ← Save after adding
+        update_task_list()
 
         # Simple validation
         if not title or not due_date:
@@ -84,14 +80,17 @@ def TaskManagerUI(parent):
             line = f"{i+1}. {task['title']} [{task['category']}] - Due: {task['due_date']}"
             task_listbox.insert(tk.END, line)
 
-    def delete_selected_task():
+   def delete_selected_task():
         selection = task_listbox.curselection()
         if not selection:
             messagebox.showwarning("No selection", "Please select a task to delete.")
             return
         index = selection[0]
         del tasks[index]
+
+        save_tasks_to_file(tasks)  # ← Save updated task list to JSON
         update_task_list()
+
 
     delete_button = ttk.Button(parent, text="Delete Selected Task", command=delete_selected_task)
     delete_button.pack(pady=5)
