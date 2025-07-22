@@ -1,10 +1,11 @@
+# src/task_manager.py
 
 import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import datetime
+from utils import save_tasks_to_file, load_tasks_from_file
 
-tasks = []  # Simple in-memory list of tasks
+tasks = load_tasks_from_file()  # ← Load saved tasks on app launch
 
 def TaskManagerUI(parent):
     # Clear and set up layout
