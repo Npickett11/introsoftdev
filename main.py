@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 
-def open_dashboard(root):
-    # This will be replaced later when we build the dashboard
+from dashboard import open_dashboard
+
     root.destroy()
     new_window = tk.Tk()
     new_window.title("StudyBuddy Dashboard")
