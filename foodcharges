@@ -1,9 +1,0 @@
-food_charge = float(input("Enter the charge for the food: "))
-tip = food_charge * 0.18
-tax = food_charge * 0.07
-total = food_charge + tip + tax
-
-print("Food Charge: $", food_charge)
-print("Tip (18%): $", tip)
-print("Sales Tax (7%): $", tax)
-print("Total: $", total) 
