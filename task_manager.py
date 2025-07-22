@@ -8,6 +8,10 @@ from utils import save_tasks_to_file, load_tasks_from_file
 tasks = load_tasks_from_file()  # ← Load saved tasks on app launch
 
 def TaskManagerUI(parent):
+    tasks.append(task)
+    save_tasks_to_file(tasks)  # ← Save after adding
+    update_task_list()
+
     # Clear and set up layout
     for widget in parent.winfo_children():
         widget.destroy()
