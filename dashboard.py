@@ -3,7 +3,14 @@ from tkinter import ttk
 from task_manager import TaskManagerUI
 from study_timer import StudyTimerUI
 from calendar_view import CalendarViewUI
+from progress_view import ProgressViewUI
 
+nav_buttons = [
+    ("Tasks", lambda: show_section(TaskManagerUI)),
+    ("Study Timer", lambda: show_section(StudyTimerUI)),
+    ("Calendar", lambda: show_section(CalendarViewUI)),
+    ("Progress", lambda: show_section(ProgressViewUI))  # Add this line
+]
 def open_dashboard():
     dashboard = tk.Tk()
     dashboard.title("StudyBuddy Dashboard")
